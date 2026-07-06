@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root{
+  --bg:#0B1220;
+  --card:#111827;
+  --primary:#2563EB;
+  --danger:#DC2626;
+  --success:#16A34A;
+  --text:#F9FAFB;
+  --muted:#94A3B8;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+}

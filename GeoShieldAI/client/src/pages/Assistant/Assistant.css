@@ -1,0 +1,469 @@
+.assistant {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.assistant-header {
+  margin-bottom: 20px;
+}
+
+.assistant-header h1 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.assistant-header p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Tabs */
+.assistant-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  bottom: -1px;
+}
+
+.tab-btn:hover {
+  color: #d1d5db;
+}
+
+.tab-btn.active {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+/* Assistant Content */
+.assistant-content {
+  flex: 1;
+  display: flex;
+  min-height: 600px;
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* Chat Container */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.messages-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.6);
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.3);
+  border-radius: 4px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+/* Messages */
+.message {
+  display: flex;
+  gap: 12px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message-avatar {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.message.user .message-avatar {
+  order: 2;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid rgba(75, 85, 99, 0.2);
+}
+
+.message.user .message-content {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.2));
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.message-content p {
+  color: #d1d5db;
+  font-size: 14px;
+  margin: 0 0 6px 0;
+  line-height: 1.5;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-time {
+  color: #6b7280;
+  font-size: 11px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Typing Animation */
+.message-content.typing {
+  padding: 12px 20px;
+}
+
+.message-content.typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #60a5fa;
+  margin: 0 3px;
+  animation: typing 1.4s infinite;
+}
+
+.message-content.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.message-content.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(75, 85, 99, 0.2);
+  background: rgba(17, 24, 39, 0.8);
+}
+
+.input-area input {
+  flex: 1;
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  color: #d1d5db;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-area input:focus {
+  border-color: #2563eb;
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.input-area input::placeholder {
+  color: #6b7280;
+}
+
+.input-area input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-area button {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.input-area button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: rgba(75, 85, 99, 0.3) !important;
+  color: #9ca3af !important;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: rgba(75, 85, 99, 0.5) !important;
+}
+
+/* Assessment Content */
+.assessment-content {
+  flex-direction: column;
+  padding: 24px;
+}
+
+.assessment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  height: 100%;
+}
+
+.assessment-input {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.assessment-input h3 {
+  color: #d1d5db;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.assessment-input textarea {
+  flex: 1;
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  color: #d1d5db;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  resize: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.assessment-input textarea:focus {
+  border-color: #2563eb;
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.assessment-input textarea::placeholder {
+  color: #6b7280;
+}
+
+.analyze-btn {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Assessment Result */
+.assessment-result {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(31, 41, 55, 0.4);
+  border: 1px solid rgba(75, 85, 99, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-header h3 {
+  color: #d1d5db;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.download-btn-small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #60a5fa;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.download-btn-small:hover {
+  background: rgba(37, 99, 235, 0.3);
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
+.result-content {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 8px;
+}
+
+.result-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.result-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.result-content::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.3);
+  border-radius: 3px;
+}
+
+.result-content p {
+  color: #d1d5db;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+  word-wrap: break-word;
+}
+
+.result-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .assessment-container {
+    grid-template-columns: 1fr;
+  }
+
+  .message-content {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .assistant-header h1 {
+    font-size: 24px;
+  }
+
+  .assistant-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .messages-area {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .message-content {
+    max-width: 100%;
+  }
+
+  .input-area {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+
+  .assessment-content {
+    padding: 16px;
+  }
+
+  .assessment-input textarea {
+    font-size: 12px;
+  }
+
+  .result-content {
+    max-height: 300px;
+  }
+}
